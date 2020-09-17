@@ -1,4 +1,4 @@
-const db = require('../data/dbConfig.js');
+const db = require('../data/dbConfig.js')
 
 module.exports = {
   insert,
@@ -6,7 +6,7 @@ module.exports = {
   remove,
   getAll,
   findById,
-};
+}
 
 async function insert(hobbit) {
   return db('hobbits')
@@ -14,7 +14,7 @@ async function insert(hobbit) {
 }
 
 async function update(id, changes) {
-  return null;
+  return null
 }
 
 function remove(id) {
@@ -24,9 +24,9 @@ function remove(id) {
 }
 
 function getAll() {
-  return db('hobbits');
+  return db('hobbits')
 }
 
 function findById(id) {
-  return null;
+  return null
 }

@@ -31,7 +31,7 @@ server.post("/hobbits", (req, res) => {
         res.status(400).json({ message: "please provide a name" })
     }
 })
-server.delete("/hobbits/:id", (req, res) => {
+server.delete("/hobbits/:id", verifyId(), (req, res) => {
     Hobbits.remove(req.params.id)
         .then(account => {
             res.status(204).json(account)
@@ -41,4 +41,29 @@ server.delete("/hobbits/:id", (req, res) => {
         })
 
 })
+
+function verifyId() {
+    return (req, res, next) => {
+        console.log(req.params.id)
+        const id = req.params.id
+        console.log(id)
+
+        Hobbits.findById(id)
+            .then(hobbit => {
+                console.log(hobbit)
+                if (hobbit.length) {
+                    next()
+                } else {
+                    res.status(404).json({ message: `Hobbit not found` })
+                }
+            })
+            .catch(error => {
+                console.log(error.message)
+                res.status(500).json(error.message)
+
+            })
+
+    }
+
+}
 module.exports = server

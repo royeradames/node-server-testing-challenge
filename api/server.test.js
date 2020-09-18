@@ -65,13 +65,17 @@ describe('server', function () {
 
         it('should return status 204', () => {
             return supertest(server)
-                .delete(`/hobbits/1`)
+                .delete(`/hobbits/2`)
                 .then(res => {
                     expect(res.status).toBe(204)
                 })
         })
-        it('should return account of 1', () => {
-            
+        it('should return status 404', () => {
+            return supertest(server)
+                .delete(`/hobbits/notAndID`)
+                .then(res => {
+                    expect(res.status).toBe(404)
+                })
         }
         )
     })

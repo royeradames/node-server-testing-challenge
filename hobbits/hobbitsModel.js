@@ -10,7 +10,7 @@ module.exports = {
 
 async function insert(hobbit) {
   return db('hobbits')
-    .insert({ name: hobbit })
+    .insert(hobbit)
 }
 
 async function update(id, changes) {

@@ -55,10 +55,24 @@ describe('server', function () {
                 });
         });
         it("should insert the hobbit into the database", async () => {
-            const res = await supertest(server).post('/hobbits').send({name: 'sam'})
+            const res = await supertest(server).post('/hobbits').send({ name: 'sam' })
 
             //body is empty
             // expect(res.body.data.name).toBe('sam')
         });
     });
+    describe('.delete /hobbits/:id', () => {
+
+        it('should return status 204', () => {
+            return supertest(server)
+                .delete(`/hobbits/1`)
+                .then(res => {
+                    expect(res.status).toBe(204)
+                })
+        })
+        it('should return account of 1', () => {
+            
+        }
+        )
+    })
 })

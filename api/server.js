@@ -33,8 +33,8 @@ server.post("/hobbits", (req, res) => {
 })
 server.delete("/hobbits/:id", (req, res) => {
     Hobbits.remove(req.params.id)
-        .then(hobbit => {
-            res.status(201).json({ data: hobbit })
+        .then(account => {
+            res.status(204).json(account)
         })
         .catch(error => {
             res.status(500).json({ message: error.message })

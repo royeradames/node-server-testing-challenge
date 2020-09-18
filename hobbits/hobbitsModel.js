@@ -18,10 +18,9 @@ async function update(id, changes) {
 }
 
 function remove(id) {
-  db('hobbits')
+  return db('hobbits')
     .where({ id })
     .del()
-    return findById(id)  
 }
 
 function getAll() {
